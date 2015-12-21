@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Klasyfikacja moich ocen z dwóch semestrów.</title>
+
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+    <script src="js/angular.min.js"></script>
+    <script src="js/controller-oceny.js"></script>
+		<style>
+			.center-block {
+				float: none;
+			}
+		</style>
+	</head>
+
+	<body ng-app="aplikacjaSkoki">
+
+	<div class="container" ng-controller="kontrolerTabeliSkoczkow">
+		<div class="row">
+			<div class="col-sm-8 center-block">
+				<h1 class="text-center">Zestawienie moich {{oceny.length}} ocen z {{ile_semestrow}} semestrów.</h1>
+				<br/>
+				<div class="input-group">
+					<span class="input-group-addon">Szukaj: </span>
+					<input type="text" class="form-control" placeholder="Czego szukasz?" ng-model="wyszukiwarka"> 
+				</div>
+				<br/>
+
+					<div class="table-responsive">
+						<table class="table table-hover">
+							<thead>
+								<tr>
+									<th ng-repeat="naglowek in [
+										'Semestr' , 'Przedmiot', 'Forma Zajęć', 'Ocena'
+									]">
+									{{naglowek}}
+								</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr ng-repeat='element in oceny | filter : wyszukiwarka'>
+									<td>{{element.Semestr}}</td>
+									<td>{{element.Przedmiot}}</td>
+									<td>{{element.Forma_zaj}}</td>
+									<td>{{element.Ocena}}</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+		<!-- ============================= JavaScript ============================= -->
+		<script src="js/bootstrap.min.js"></script>
+
+	</body>
+</html>
